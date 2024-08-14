@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bookRoutes = require("./interface/routes/bookRoutes");
 const memberRoutes = require("./interface/routes/memberRoutes");
+const setupSwagger = require("./swagger/swagger");
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use((err, req, res, next) => {
 
 app.use("/api/book", bookRoutes);
 app.use("/api/member", memberRoutes);
+
+setupSwagger(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
