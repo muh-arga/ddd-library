@@ -57,14 +57,14 @@
    ```
    - Running test
    ```bash
-       yarn test
+    yarn test
    ```
 
 ## **Usage**
 
 **API Enpoints:**
-_ GET /api/book/check: Check all book and stock.
-_ GET /api/member/check: Check all member and number of borrowed books.
-_ POST /api/member/borrow: Borrow a book.
-_ POST /api/member/return: Return a book.
-_ GET /api-docs: Swagger Documentation
+- GET /api/book/check: Check all book and stock.
+- GET /api/member/check: Check all member and number of borrowed books.
+- POST /api/member/borrow: Borrow a book.
+- POST /api/member/return: Return a book.
+- GET /api-docs: Swagger Documentation
