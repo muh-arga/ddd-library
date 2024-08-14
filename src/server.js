@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const bookRoutes = require("./interface/routes/bookRoutes");
+const memberRoutes = require("./interface/routes/memberRoutes");
 
 const app = express();
 
@@ -12,9 +14,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Working"});
-});
+app.use("/api/book", bookRoutes);
+app.use("/api/member", memberRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

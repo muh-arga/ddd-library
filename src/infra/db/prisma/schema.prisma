@@ -14,22 +14,35 @@ datasource db {
 }
 
 model Member {
-  id        Int      @id @default(autoincrement())
-  code      String   @unique
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  books     Book[]   @relation("MemberBooks")
+  id            Int            @id @default(autoincrement())
+  code          String         @unique
+  name          String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  borrowedBooks BorrowedBook[]
+  penaltyUntil DateTime?
 }
 
 model Book {
-  id        Int      @id @default(autoincrement())
-  code      String   @unique
-  title     String
-  author    String
-  stock     Int
-  available Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  members   Member[] @relation("MemberBooks")
+  id           Int            @id @default(autoincrement())
+  code         String         @unique
+  title        String
+  author       String
+  stock        Int
+  available    Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  borrowedBy   BorrowedBook[]
+}
+
+model BorrowedBook {
+  id         Int       @id @default(autoincrement())
+  bookCode   String
+  memberCode String
+  borrowedAt DateTime  @default(now())
+  returnedAt DateTime?
+  penalty    Int? // Penalty in days if the book is returned late
+
+  book   Book   @relation(fields: [bookCode], references: [code])
+  member Member @relation(fields: [memberCode], references: [code])
 }
