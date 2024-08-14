@@ -1,0 +1,9 @@
+{
+  "name": "ddd-library",
+  "packageManager": "yarn@4.4.0",
+  "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "express": "^4.19.2",
+    "prisma": "^5.18.0"
+  }
+}
